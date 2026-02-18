@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charitize – Charity Organization</title>
+  <title>EcoShift Hub – Sustainable Innovation Organization</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -11,872 +11,9 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="index.css" />
 
-  <style>
-    /* ===========================
-       CSS VARIABLES & BASE
-    =========================== */
-    :root {
-      --primary:   #e05a2b;
-      --primary-d: #c04a1e;
-      --secondary: #1a3a5c;
-      --accent:    #f5a623;
-      --light-bg:  #fdf8f3;
-      --dark-bg:   #0e1f30;
-      --text:      #2c2c2c;
-      --muted:     #6c7a89;
-      --white:     #ffffff;
-      --border:    #e8ddd3;
-      --section-py: 90px;
-      --radius:    8px;
-      --shadow:    0 8px 40px rgba(14,31,48,.10);
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      background: var(--white);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    h1,h2,h3,h4,h5,h6 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: var(--secondary);
-    }
-
-    a { text-decoration: none; transition: all .25s; }
-    img { max-width: 100%; }
-
-    .btn-primary-custom {
-      background: var(--primary);
-      color: #fff;
-      padding: 13px 34px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      border: 2px solid var(--primary);
-      font-size: .95rem;
-      letter-spacing: .3px;
-      transition: all .3s;
-      display: inline-block;
-    }
-    .btn-primary-custom:hover {
-      background: var(--primary-d);
-      border-color: var(--primary-d);
-      color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(224,90,43,.35);
-    }
-
-    .btn-outline-custom {
-      background: transparent;
-      color: var(--white);
-      padding: 13px 34px;
-      border-radius: var(--radius);
-      font-weight: 600;
-      border: 2px solid var(--white);
-      font-size: .95rem;
-      transition: all .3s;
-      display: inline-block;
-    }
-    .btn-outline-custom:hover {
-      background: var(--white);
-      color: var(--secondary);
-      transform: translateY(-2px);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.2;
-      margin-bottom: .5rem;
-    }
-
-    .section-subtitle {
-      color: var(--primary);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: .85rem;
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      display: block;
-      margin-bottom: .75rem;
-    }
-
-    .divider-line {
-      width: 55px;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-      margin: 1rem 0 1.6rem;
-    }
-    .divider-line.center { margin: 1rem auto 1.6rem; }
-
-    /* ===========================
-       TOP BAR
-    =========================== */
-    #topbar {
-      background: var(--secondary);
-      color: rgba(255,255,255,.8);
-      font-size: .82rem;
-      padding: 9px 0;
-    }
-    #topbar a { color: rgba(255,255,255,.8); }
-    #topbar a:hover { color: var(--accent); }
-    #topbar .social-icons a {
-      width: 26px; height: 26px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,.1);
-      border-radius: 50%;
-      margin-left: 5px;
-      font-size: .75rem;
-    }
-    #topbar .social-icons a:hover { background: var(--primary); }
-
-    /* ===========================
-       NAVBAR
-    =========================== */
-    #mainNav {
-      background: var(--white);
-      box-shadow: 0 2px 20px rgba(0,0,0,.08);
-      padding: 0;
-      transition: all .35s;
-    }
-    #mainNav.sticky-top { position: sticky; top: 0; z-index: 1040; }
-
-    .navbar-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: var(--secondary) !important;
-      padding: 14px 0;
-    }
-    .navbar-brand span { color: var(--primary); }
-
-    .navbar-nav .nav-link {
-      color: var(--text) !important;
-      font-weight: 500;
-      font-size: .93rem;
-      padding: 22px 16px !important;
-      position: relative;
-    }
-    .navbar-nav .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 16px; right: 16px;
-      height: 3px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transition: transform .25s;
-    }
-    .navbar-nav .nav-link:hover::after,
-    .navbar-nav .nav-link.active::after { transform: scaleX(1); }
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active { color: var(--primary) !important; }
-
-    .nav-donate-btn {
-      background: var(--primary);
-      color: #fff !important;
-      border-radius: var(--radius);
-      padding: 10px 22px !important;
-      margin-left: 8px;
-      font-weight: 600 !important;
-      align-self: center;
-    }
-    .nav-donate-btn::after { display: none !important; }
-    .nav-donate-btn:hover { background: var(--primary-d) !important; color: #fff !important; }
-
-    .dropdown-menu {
-      border: none;
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
-      border-top: 3px solid var(--primary);
-      padding: 8px 0;
-    }
-    .dropdown-item { font-size: .9rem; padding: 8px 20px; color: var(--text); }
-    .dropdown-item:hover { background: var(--light-bg); color: var(--primary); }
-
-    /* ===========================
-       HERO CAROUSEL
-    =========================== */
-    #heroCarousel { position: relative; }
-
-    .hero-slide {
-      min-height: 680px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-slide .bg-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(14,31,48,.82) 0%, rgba(14,31,48,.45) 100%);
-      z-index: 1;
-    }
-
-    .hero-slide .bg-img {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      z-index: 0;
-      transform: scale(1.05);
-      transition: transform 8s ease;
-    }
-    .carousel-item.active .bg-img { transform: scale(1); }
-
-    .hero-slide .container { position: relative; z-index: 2; }
-
-    .hero-content { max-width: 650px; }
-    .hero-content .hero-tag {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      font-size: .78rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 2px;
-      margin-bottom: 1.2rem;
-    }
-    .hero-content h1 {
-      color: #fff;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
-    }
-    .hero-content p {
-      color: rgba(255,255,255,.85);
-      font-size: 1.08rem;
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
-
-    .carousel-controls { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 8px; }
-    .carousel-controls button {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.6);
-      background: transparent;
-      cursor: pointer;
-      transition: all .25s;
-      padding: 0;
-    }
-    .carousel-controls button.active { background: var(--primary); border-color: var(--primary); width: 30px; border-radius: 6px; }
-
-    .carousel-arrow {
-      position: absolute;
-      top: 50%; transform: translateY(-50%);
-      z-index: 10;
-      background: rgba(255,255,255,.15);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,.3);
-      color: #fff;
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: all .25s;
-      font-size: 1.1rem;
-    }
-    .carousel-arrow:hover { background: var(--primary); border-color: var(--primary); }
-    .carousel-arrow.prev { left: 20px; }
-    .carousel-arrow.next { right: 20px; }
-
-    /* ===========================
-       STATS BAR
-    =========================== */
-    #statsBar {
-      background: var(--secondary);
-      padding: 36px 0;
-    }
-    .stat-item { text-align: center; padding: 10px 20px; position: relative; }
-    .stat-item + .stat-item::before {
-      content: '';
-      position: absolute; left: 0; top: 50%;
-      transform: translateY(-50%);
-      width: 1px; height: 50px;
-      background: rgba(255,255,255,.15);
-    }
-    .stat-item .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-    }
-    .stat-item .num span { color: var(--primary); }
-    .stat-item p { color: rgba(255,255,255,.65); font-size: .88rem; margin: .3rem 0 0; letter-spacing: .5px; text-transform: uppercase; }
-
-    /* ===========================
-       ABOUT SECTION
-    =========================== */
-    #about { padding: var(--section-py) 0; background: var(--white); }
-
-    .about-img-wrap {
-      position: relative;
-      padding-bottom: 30px;
-      padding-right: 30px;
-    }
-    .about-img-wrap img {
-      border-radius: 10px;
-      width: 100%;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 1;
-    }
-    .about-img-wrap .img-accent {
-      position: absolute;
-      bottom: 0; right: 0;
-      width: 65%;
-      height: 65%;
-      background: var(--light-bg);
-      border-radius: 10px;
-      border: 4px solid var(--border);
-      z-index: 0;
-    }
-    .about-badge {
-      position: absolute;
-      bottom: 50px; left: -20px;
-      background: var(--primary);
-      color: #fff;
-      padding: 18px 22px;
-      border-radius: 10px;
-      z-index: 2;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(224,90,43,.4);
-    }
-    .about-badge .big { font-size: 2.2rem; font-weight: 800; font-family: 'Playfair Display', serif; line-height: 1; }
-    .about-badge small { font-size: .75rem; opacity: .9; display: block; }
-
-    .check-list { list-style: none; padding: 0; margin: 1.5rem 0; }
-    .check-list li {
-      display: flex; align-items: flex-start;
-      gap: 12px;
-      margin-bottom: .85rem;
-      font-size: .95rem;
-    }
-    .check-list li i { color: var(--primary); margin-top: 4px; flex-shrink: 0; }
-
-    /* ===========================
-       CAUSES / DONATION CASES
-    =========================== */
-    #causes { padding: var(--section-py) 0; background: var(--light-bg); }
-
-    .cause-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,.06);
-      transition: all .35s;
-    }
-    .cause-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-    }
-    .cause-card .img-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-    .cause-card .img-wrap img {
-      width: 100%; height: 220px;
-      object-fit: cover;
-      transition: transform .4s;
-    }
-    .cause-card:hover .img-wrap img { transform: scale(1.06); }
-    .cause-card .category-tag {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--primary);
-      color: #fff;
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 3px;
-    }
-    .cause-card .body { padding: 22px; }
-    .cause-card h5 {
-      font-size: 1.12rem;
-      margin-bottom: .5rem;
-      color: var(--secondary);
-    }
-    .cause-card h5 a:hover { color: var(--primary); }
-    .cause-card p { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
-
-    .progress-wrap { margin: 1rem 0; }
-    .progress-wrap .progress {
-      height: 6px;
-      background: var(--border);
-      border-radius: 10px;
-      overflow: visible;
-    }
-    .progress-wrap .progress-bar {
-      background: var(--primary);
-      border-radius: 10px;
-      position: relative;
-    }
-    .fund-info { display: flex; justify-content: space-between; font-size: .82rem; margin-top: .5rem; }
-    .fund-info span { color: var(--muted); }
-    .fund-info strong { color: var(--secondary); }
-
-    .cause-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 22px;
-      border-top: 1px solid var(--border);
-    }
-    .cause-footer .meta { font-size: .82rem; color: var(--muted); }
-    .cause-footer .meta strong { color: var(--primary); }
-
-    /* ===========================
-       MISSION / VIDEO SECTION
-    =========================== */
-    #mission {
-      padding: var(--section-py) 0;
-      background: var(--secondary);
-      position: relative;
-      overflow: hidden;
-    }
-    #mission::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1600&auto=format') center/cover no-repeat;
-      opacity: .12;
-    }
-    #mission .container { position: relative; z-index: 1; }
-    #mission h2 { color: var(--white); }
-    #mission p { color: rgba(255,255,255,.75); }
-    .play-btn {
-      width: 82px; height: 82px;
-      background: var(--primary);
-      border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: #fff;
-      font-size: 1.5rem;
-      position: relative;
-      cursor: pointer;
-      transition: all .3s;
-      border: none;
-      box-shadow: 0 0 0 0 rgba(224,90,43,.5);
-      animation: pulse 2.5s infinite;
-    }
-    .play-btn:hover { background: var(--primary-d); transform: scale(1.08); }
-    @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 rgba(224,90,43,.5); }
-      70%  { box-shadow: 0 0 0 22px rgba(224,90,43,0); }
-      100% { box-shadow: 0 0 0 0 rgba(224,90,43,0); }
-    }
-
-    .mission-stat {
-      text-align: center;
-      padding: 24px;
-      background: rgba(255,255,255,.06);
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,.1);
-    }
-    .mission-stat .icon { font-size: 2rem; color: var(--accent); margin-bottom: .6rem; }
-    .mission-stat h4 { color: #fff; font-size: 1.9rem; margin: 0; }
-    .mission-stat p { color: rgba(255,255,255,.6); font-size: .85rem; margin: .3rem 0 0; }
-
-    /* ===========================
-       EVENTS
-    =========================== */
-    #events { padding: var(--section-py) 0; background: var(--white); }
-
-    .event-card {
-      display: flex; gap: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      margin-bottom: 18px;
-      transition: all .3s;
-    }
-    .event-card:hover {
-      border-color: var(--primary);
-      box-shadow: 0 4px 20px rgba(224,90,43,.1);
-      transform: translateX(4px);
-    }
-    .event-date {
-      min-width: 64px;
-      text-align: center;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 8px;
-      padding: 10px 8px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-    }
-    .event-date .day { font-size: 1.8rem; font-weight: 800; font-family: 'Playfair Display', serif; line-height: 1; }
-    .event-date .month { font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; opacity: .85; }
-    .event-info h5 { font-size: 1.05rem; margin-bottom: .35rem; color: var(--secondary); }
-    .event-info h5 a:hover { color: var(--primary); }
-    .event-meta { font-size: .82rem; color: var(--muted); }
-    .event-meta span { margin-right: 14px; }
-    .event-meta i { color: var(--primary); margin-right: 4px; }
-
-    .event-featured-img {
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-    .event-featured-img img {
-      width: 100%; height: 420px; object-fit: cover;
-    }
-    .event-featured-img .label {
-      position: absolute;
-      top: 16px; left: 16px;
-      background: var(--primary);
-      color: #fff;
-      padding: 4px 14px;
-      border-radius: 3px;
-      font-size: .78rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    /* ===========================
-       DONATE FORM
-    =========================== */
-    #donate { padding: var(--section-py) 0; background: var(--light-bg); }
-
-    .donate-box {
-      background: var(--white);
-      border-radius: 14px;
-      padding: 44px;
-      box-shadow: var(--shadow);
-    }
-    .amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1rem 0 1.5rem; }
-    .amount-btn {
-      padding: 12px;
-      border: 2px solid var(--border);
-      background: var(--white);
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--secondary);
-      cursor: pointer;
-      transition: all .25s;
-    }
-    .amount-btn:hover, .amount-btn.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-    }
-    .form-control, .form-select {
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 12px 16px;
-      font-size: .95rem;
-      color: var(--text);
-      background: var(--white);
-      transition: border .25s;
-    }
-    .form-control:focus, .form-select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(224,90,43,.12);
-      outline: none;
-    }
-    .form-label { font-weight: 500; font-size: .9rem; margin-bottom: .4rem; color: var(--secondary); }
-
-    .secure-badge {
-      display: flex; align-items: center; gap: 8px;
-      font-size: .82rem; color: var(--muted);
-      margin-top: 1rem;
-      justify-content: center;
-    }
-    .secure-badge i { color: #2ecc71; }
-
-    .donate-info { padding: 20px 0; }
-    .donate-info .info-block {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .donate-info .info-block .icon {
-      width: 48px; height: 48px; flex-shrink: 0;
-      background: var(--light-bg);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      color: var(--primary);
-    }
-    .donate-info .info-block h6 { font-size: .97rem; margin-bottom: .2rem; color: var(--secondary); }
-    .donate-info .info-block p { font-size: .87rem; color: var(--muted); margin: 0; }
-
-    /* ===========================
-       TEAM SECTION
-    =========================== */
-    #team { padding: var(--section-py) 0; background: var(--white); }
-
-    .team-card {
-      text-align: center;
-      transition: all .35s;
-    }
-    .team-card:hover { transform: translateY(-6px); }
-    .team-card .img-wrap {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1.2rem;
-    }
-    .team-card img {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--border);
-      transition: border-color .3s;
-    }
-    .team-card:hover img { border-color: var(--primary); }
-    .team-card .social-overlay {
-      position: absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 6px;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .team-card:hover .social-overlay { opacity: 1; }
-    .team-card .social-overlay a {
-      width: 30px; height: 30px;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .72rem;
-    }
-    .team-card h5 { font-size: 1.05rem; margin-bottom: .2rem; }
-    .team-card span { font-size: .85rem; color: var(--primary); font-weight: 500; }
-
-    /* ===========================
-       TESTIMONIALS
-    =========================== */
-    #testimonials { padding: var(--section-py) 0; background: var(--secondary); }
-    #testimonials .section-subtitle { color: var(--accent); }
-    #testimonials h2 { color: var(--white); }
-
-    .testimonial-card {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 12px;
-      padding: 32px;
-      transition: all .3s;
-    }
-    .testimonial-card:hover { background: rgba(255,255,255,.12); }
-    .testimonial-card .quote-icon { color: var(--primary); font-size: 2rem; margin-bottom: 1rem; }
-    .testimonial-card p { color: rgba(255,255,255,.8); font-size: .97rem; line-height: 1.75; margin-bottom: 1.5rem; }
-    .testimonial-card .author { display: flex; align-items: center; gap: 14px; }
-    .testimonial-card .author img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
-    .testimonial-card .author h6 { color: #fff; font-size: .97rem; margin: 0; }
-    .testimonial-card .author span { font-size: .82rem; color: rgba(255,255,255,.5); }
-    .stars { color: var(--accent); font-size: .82rem; margin-bottom: .25rem; }
-
-    /* ===========================
-       VOLUNTEER SECTION
-    =========================== */
-    #volunteer { padding: var(--section-py) 0; background: var(--light-bg); }
-
-    .volunteer-box {
-      background: var(--secondary);
-      color: var(--white);
-      border-radius: 14px;
-      padding: 50px 44px;
-      position: relative;
-      overflow: hidden;
-    }
-    .volunteer-box::after {
-      content: '\f1ae';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      position: absolute;
-      right: -20px; bottom: -20px;
-      font-size: 12rem;
-      color: rgba(255,255,255,.04);
-      line-height: 1;
-    }
-    .volunteer-box h2 { color: #fff; }
-    .volunteer-box p { color: rgba(255,255,255,.7); }
-    .volunteer-form .form-control,
-    .volunteer-form .form-select {
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.15);
-      color: #fff;
-    }
-    .volunteer-form .form-control::placeholder { color: rgba(255,255,255,.4); }
-    .volunteer-form .form-label { color: rgba(255,255,255,.8); }
-    .volunteer-form .form-control:focus {
-      background: rgba(255,255,255,.13);
-      border-color: var(--primary);
-    }
-
-    /* ===========================
-       NEWSLETTER
-    =========================== */
-    #newsletter {
-      background: var(--primary);
-      padding: 64px 0;
-    }
-    #newsletter h3 { color: #fff; font-size: 2rem; }
-    #newsletter p { color: rgba(255,255,255,.8); }
-    .newsletter-form { display: flex; max-width: 500px; }
-    .newsletter-form .form-control {
-      border-radius: var(--radius) 0 0 var(--radius);
-      border: none;
-      background: rgba(255,255,255,.2);
-      color: #fff;
-      padding: 14px 18px;
-    }
-    .newsletter-form .form-control::placeholder { color: rgba(255,255,255,.6); }
-    .newsletter-form .form-control:focus { box-shadow: none; background: rgba(255,255,255,.3); }
-    .newsletter-form button {
-      border-radius: 0 var(--radius) var(--radius) 0;
-      background: var(--secondary);
-      border: none;
-      color: #fff;
-      padding: 0 24px;
-      font-weight: 600;
-      font-size: .9rem;
-      letter-spacing: .5px;
-      transition: background .25s;
-    }
-    .newsletter-form button:hover { background: #0e1f30; }
-
-    /* ===========================
-       CONTACT
-    =========================== */
-    #contact { padding: var(--section-py) 0; background: var(--white); }
-
-    .contact-info-block {
-      display: flex; gap: 18px; align-items: flex-start;
-      margin-bottom: 28px;
-    }
-    .contact-info-block .icon {
-      width: 54px; height: 54px; flex-shrink: 0;
-      background: var(--light-bg);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem;
-      color: var(--primary);
-    }
-    .contact-info-block h6 { font-size: 1rem; margin-bottom: .2rem; color: var(--secondary); }
-    .contact-info-block p { margin: 0; color: var(--muted); font-size: .9rem; }
-
-    .contact-form-wrap {
-      background: var(--light-bg);
-      border-radius: 14px;
-      padding: 40px;
-    }
-    .contact-form-wrap .form-control, .contact-form-wrap textarea {
-      background: var(--white);
-    }
-
-    /* ===========================
-       MAP
-    =========================== */
-    #mapSection { height: 380px; }
-    #mapSection iframe { width: 100%; height: 100%; border: none; }
-
-    /* ===========================
-       FOOTER
-    =========================== */
-    footer {
-      background: var(--dark-bg);
-      color: rgba(255,255,255,.65);
-      padding: 70px 0 0;
-    }
-    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #fff; font-weight: 900; }
-    .footer-brand span { color: var(--primary); }
-    footer p { font-size: .9rem; line-height: 1.8; }
-    .footer-heading { color: #fff; font-size: 1.1rem; font-family: 'DM Sans', sans-serif; font-weight: 600; margin-bottom: 1.2rem; position: relative; padding-bottom: .6rem; }
-    .footer-heading::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 2px; background: var(--primary); }
-    .footer-links { list-style: none; padding: 0; }
-    .footer-links li { margin-bottom: .6rem; }
-    .footer-links li a { color: rgba(255,255,255,.6); font-size: .9rem; transition: all .25s; display: flex; align-items: center; gap: 8px; }
-    .footer-links li a i { font-size: .7rem; color: var(--primary); }
-    .footer-links li a:hover { color: var(--primary); padding-left: 4px; }
-    .footer-social a {
-      width: 36px; height: 36px;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 50%;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.6);
-      font-size: .85rem;
-      margin-right: 6px;
-      transition: all .25s;
-    }
-    .footer-social a:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.07);
-      margin-top: 50px;
-      padding: 22px 0;
-      font-size: .84rem;
-    }
-    .footer-bottom a { color: var(--primary); }
-
-    /* ===========================
-       BACK TO TOP
-    =========================== */
-    #backTop {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      width: 44px; height: 44px;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-      opacity: 0; pointer-events: none;
-      transition: all .35s;
-      z-index: 999;
-      box-shadow: 0 4px 14px rgba(224,90,43,.4);
-      border: none;
-    }
-    #backTop.show { opacity: 1; pointer-events: all; }
-    #backTop:hover { background: var(--primary-d); transform: translateY(-3px); }
-
-    /* ===========================
-       VIDEO MODAL
-    =========================== */
-    #videoModal .modal-content { background: #000; border: none; border-radius: 8px; overflow: hidden; }
-    #videoModal .modal-header { border: none; padding: 12px 16px; }
-    #videoModal .btn-close { filter: invert(1); }
-    .ratio { --bs-aspect-ratio: 56.25%; }
-
-    /* ===========================
-       ANIMATIONS
-    =========================== */
-    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.delay-1 { transition-delay: .15s; }
-    .fade-up.delay-2 { transition-delay: .3s; }
-    .fade-up.delay-3 { transition-delay: .45s; }
-
-    /* ===========================
-       RESPONSIVE
-    =========================== */
-    @media (max-width: 991px) {
-      :root { --section-py: 60px; }
-      .navbar-nav .nav-link { padding: 12px 16px !important; }
-      .navbar-nav .nav-link::after { display: none; }
-      .nav-donate-btn { margin: 8px 0; }
-      .hero-slide { min-height: 520px; }
-      .about-badge { display: none; }
-      .donate-box { padding: 28px 20px; }
-      .volunteer-box { padding: 32px 24px; }
-    }
-    @media (max-width: 575px) {
-      .amount-grid { grid-template-columns: repeat(2,1fr); }
-      .event-card { flex-direction: column; }
-      .newsletter-form { flex-direction: column; gap: 8px; }
-      .newsletter-form .form-control { border-radius: var(--radius); }
-      .newsletter-form button { border-radius: var(--radius); padding: 12px 20px; }
-    }
-  </style>
 </head>
 <body>
 
@@ -885,9 +22,9 @@
   <div class="container">
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
       <div class="d-flex gap-4 flex-wrap">
-        <span><i class="fas fa-phone-alt me-2"></i>+1 234 567 8900</span>
-        <span><i class="fas fa-envelope me-2"></i>info@charitize.org</span>
-        <span><i class="fas fa-map-marker-alt me-2"></i>123 Street, New York, USA</span>
+        <span><i class="fas fa-phone-alt me-2"></i>+254 700 000 000</span>
+        <span><i class="fas fa-envelope me-2"></i>info@ecoshifthub.org</span>
+        <span><i class="fas fa-map-marker-alt me-2"></i>Nairobi, Kenya</span>
       </div>
       <div class="social-icons d-flex align-items-center gap-1">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -903,7 +40,7 @@
 <!-- ========== NAVBAR ========== -->
 <nav id="mainNav" class="navbar navbar-expand-lg sticky-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Chari<span>tize</span></a>
+    <a class="navbar-brand" href="#">EcoShift<span>Hub</span></a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -912,12 +49,12 @@
         <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Causes</a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Programs</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#causes">All Causes</a></li>
-            <li><a class="dropdown-item" href="#causes">Education</a></li>
-            <li><a class="dropdown-item" href="#causes">Clean Water</a></li>
-            <li><a class="dropdown-item" href="#causes">Healthcare</a></li>
+            <li><a class="dropdown-item" href="#causes">All Programs</a></li>
+            <li><a class="dropdown-item" href="#causes">Climate Action</a></li>
+            <li><a class="dropdown-item" href="#causes">Waste Management</a></li>
+            <li><a class="dropdown-item" href="#causes">Green Innovation</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
@@ -925,13 +62,13 @@
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Pages</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#team">Our Team</a></li>
-            <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
-            <li><a class="dropdown-item" href="#volunteer">Volunteer</a></li>
+            <li><a class="dropdown-item" href="#testimonials">Impact Stories</a></li>
+            <li><a class="dropdown-item" href="#volunteer">Join Us</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         <li class="nav-item">
-          <a class="nav-link nav-donate-btn" href="#donate">Donate Now</a>
+          <a class="nav-link nav-donate-btn" href="#donate">Support EcoShift</a>
         </li>
       </ul>
     </div>
@@ -950,11 +87,11 @@
           <div class="bg-overlay"></div>
           <div class="container">
             <div class="hero-content">
-              <span class="hero-tag">Make a Difference</span>
-              <h1>Together We Can<br>Change the World</h1>
-              <p>Join thousands of compassionate people making a real impact in communities around the globe through donations, volunteering, and awareness.</p>
+              <span class="hero-tag">Sustainable Change</span>
+              <h1>Together We Can<br>Build a Greener Future</h1>
+              <p>EcoShift Hub empowers communities through climate action, innovation, and environmental education to create a cleaner, healthier world for generations to come.</p>
               <div class="d-flex flex-wrap gap-3">
-                <a href="#donate" class="btn-primary-custom">Donate Now</a>
+                <a href="#donate" class="btn-primary-custom">Support Our Work</a>
                 <a href="#about" class="btn-outline-custom">Learn More</a>
               </div>
             </div>
@@ -969,12 +106,12 @@
           <div class="bg-overlay"></div>
           <div class="container">
             <div class="hero-content">
-              <span class="hero-tag">Education for All</span>
-              <h1>Every Child Deserves<br>Quality Education</h1>
-              <p>Help us provide books, supplies, and scholarships to children in underprivileged communities who dream of a brighter future.</p>
+              <span class="hero-tag">Youth Empowerment</span>
+              <h1>Empowering Youth<br>Through Green Skills</h1>
+              <p>We train young people in climate innovation, sustainability projects, recycling initiatives, and eco-friendly entrepreneurship for long-term impact.</p>
               <div class="d-flex flex-wrap gap-3">
-                <a href="#causes" class="btn-primary-custom">Our Causes</a>
-                <a href="#volunteer" class="btn-outline-custom">Volunteer</a>
+                <a href="#causes" class="btn-primary-custom">Our Programs</a>
+                <a href="#volunteer" class="btn-outline-custom">Join Us</a>
               </div>
             </div>
           </div>
@@ -988,11 +125,11 @@
           <div class="bg-overlay"></div>
           <div class="container">
             <div class="hero-content">
-              <span class="hero-tag">Clean Water Initiative</span>
-              <h1>Clean Water is a<br>Human Right</h1>
-              <p>Over 2 billion people lack access to safe drinking water. Your donation funds wells, filtration systems, and sanitation programs.</p>
+              <span class="hero-tag">Clean Environment Initiative</span>
+              <h1>Waste is a Resource<br>When Managed Right</h1>
+              <p>EcoShift Hub drives recycling, cleanups, and sustainable waste solutions to reduce pollution and promote circular economies in our communities.</p>
               <div class="d-flex flex-wrap gap-3">
-                <a href="#donate" class="btn-primary-custom">Help Now</a>
+                <a href="#donate" class="btn-primary-custom">Take Action</a>
                 <a href="#mission" class="btn-outline-custom">Watch Video</a>
               </div>
             </div>
@@ -1023,20 +160,20 @@
   <div class="container">
     <div class="row g-0">
       <div class="col-6 col-md-3 stat-item fade-up">
-        <div class="num"><span class="counter" data-target="12">0</span>K<span>+</span></div>
-        <p>Happy Volunteers</p>
+        <div class="num"><span class="counter" data-target="3">0</span>K<span>+</span></div>
+        <p>Eco Volunteers</p>
       </div>
       <div class="col-6 col-md-3 stat-item fade-up delay-1">
-        <div class="num"><span class="counter" data-target="850">0</span><span>+</span></div>
-        <p>Projects Completed</p>
+        <div class="num"><span class="counter" data-target="120">0</span><span>+</span></div>
+        <p>Projects Delivered</p>
       </div>
       <div class="col-6 col-md-3 stat-item fade-up delay-2">
-        <div class="num">$<span class="counter" data-target="5">0</span>M<span>+</span></div>
-        <p>Funds Raised</p>
+        <div class="num"><span class="counter" data-target="250">0</span>K<span>+</span></div>
+        <p>Waste Recycled (KG)</p>
       </div>
       <div class="col-6 col-md-3 stat-item fade-up delay-3">
-        <div class="num"><span class="counter" data-target="35">0</span><span>+</span></div>
-        <p>Countries Reached</p>
+        <div class="num"><span class="counter" data-target="15">0</span><span>+</span></div>
+        <p>Communities Reached</p>
       </div>
     </div>
   </div>
@@ -1048,29 +185,29 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-5 fade-up">
         <div class="about-img-wrap">
-          <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=700&auto=format" alt="About Charitize" />
+          <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=700&auto=format" alt="About EcoShift Hub" />
           <div class="img-accent"></div>
           <div class="about-badge">
-            <div class="big">20<sup>+</sup></div>
-            <small>Years of Service</small>
+            <div class="big">5<sup>+</sup></div>
+            <small>Years of Impact</small>
           </div>
         </div>
       </div>
       <div class="col-lg-7 fade-up delay-1">
         <span class="section-subtitle">About Us</span>
-        <h2 class="section-title">We Believe In Helping<br>Each Other</h2>
+        <h2 class="section-title">Driving Sustainability<br>Through Community Action</h2>
         <div class="divider-line"></div>
-        <p>Charitize is a global nonprofit organization dedicated to creating lasting change in underserved communities. Since 2004, we've been partnering with local leaders to address critical issues: education, clean water, healthcare, and economic opportunity.</p>
-        <p class="text-muted">Our approach centers on community-led solutions, long-term partnerships, and transparent accountability to every donor and volunteer who makes our work possible.</p>
+        <p>EcoShift Hub is a community-based organization dedicated to empowering communities through sustainable innovation, environmental education, and climate action initiatives. We believe real change begins at the grassroots.</p>
+        <p class="text-muted">Our work focuses on waste management solutions, youth empowerment, tree planting, eco-innovation, and supporting communities to adopt sustainable living practices.</p>
         <ul class="check-list">
-          <li><i class="fas fa-check-circle"></i>Community-driven programs with measurable impact</li>
-          <li><i class="fas fa-check-circle"></i>100% of donations directed to active programs</li>
-          <li><i class="fas fa-check-circle"></i>Partnerships with 200+ local NGOs worldwide</li>
-          <li><i class="fas fa-check-circle"></i>Award-winning transparency and accountability</li>
+          <li><i class="fas fa-check-circle"></i>Community-driven environmental programs</li>
+          <li><i class="fas fa-check-circle"></i>Green innovation and youth empowerment initiatives</li>
+          <li><i class="fas fa-check-circle"></i>Tree planting and climate action projects</li>
+          <li><i class="fas fa-check-circle"></i>Transparency and accountability in every initiative</li>
         </ul>
         <div class="d-flex gap-3 flex-wrap mt-2">
-          <a href="#causes" class="btn-primary-custom">Our Causes</a>
-          <a href="#donate" class="btn-outline-custom" style="color:var(--secondary);border-color:var(--secondary);">Donate Now</a>
+          <a href="#causes" class="btn-primary-custom">Our Programs</a>
+          <a href="#donate" class="btn-outline-custom" style="color:var(--secondary);border-color:var(--secondary);">Support EcoShift</a>
         </div>
       </div>
     </div>
@@ -1082,10 +219,10 @@
   <div class="container">
     <div class="row justify-content-center text-center mb-5 fade-up">
       <div class="col-lg-6">
-        <span class="section-subtitle">Active Causes</span>
-        <h2 class="section-title">Causes That Need<br>Your Support</h2>
+        <span class="section-subtitle">Our Focus Areas</span>
+        <h2 class="section-title">Programs That Drive<br>Real Environmental Change</h2>
         <div class="divider-line center"></div>
-        <p class="text-muted">Every donation, no matter the size, moves us closer to a world where every person has access to the resources they need to thrive.</p>
+        <p class="text-muted">Every contribution and every volunteer hour helps us create cleaner neighborhoods, greener cities, and stronger communities.</p>
       </div>
     </div>
     <div class="row g-4">
@@ -1093,25 +230,25 @@
       <div class="col-md-6 col-lg-4 fade-up">
         <div class="cause-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format" alt="Education" />
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&auto=format" alt="Eco Education" />
             <span class="category-tag">Education</span>
           </div>
           <div class="body">
-            <h5><a href="#causes">Provide Quality Education for Children</a></h5>
-            <p>Help fund schools, teachers, and learning materials for 10,000 children in rural communities.</p>
+            <h5><a href="#causes">Environmental Awareness & Eco Education</a></h5>
+            <p>We empower schools and communities through climate education, workshops, and sustainability training programs.</p>
             <div class="progress-wrap">
               <div class="progress">
-                <div class="progress-bar" style="width:75%" role="progressbar"></div>
+                <div class="progress-bar" style="width:70%" role="progressbar"></div>
               </div>
               <div class="fund-info">
-                <span>Raised: <strong>$37,500</strong></span>
-                <span>Goal: <strong>$50,000</strong></span>
+                <span>Raised: <strong>Ksh 350,000</strong></span>
+                <span>Goal: <strong>Ksh 500,000</strong></span>
               </div>
             </div>
           </div>
           <div class="cause-footer">
-            <span class="meta"><i class="fas fa-users me-1"></i> <strong>248</strong> Donors</span>
-            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Donate</a>
+            <span class="meta"><i class="fas fa-users me-1"></i> <strong>175</strong> Supporters</span>
+            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Support</a>
           </div>
         </div>
       </div>
@@ -1119,25 +256,25 @@
       <div class="col-md-6 col-lg-4 fade-up delay-1">
         <div class="cause-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&auto=format" alt="Clean Water" />
-            <span class="category-tag">Water</span>
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&auto=format" alt="Waste Management" />
+            <span class="category-tag">Recycling</span>
           </div>
           <div class="body">
-            <h5><a href="#causes">Clean Water Access for Remote Villages</a></h5>
-            <p>Install wells and water purification systems for 5,000+ families who walk miles for safe water daily.</p>
+            <h5><a href="#causes">Waste Management & Recycling Solutions</a></h5>
+            <p>We promote recycling systems, waste collection initiatives, and cleanups to reduce pollution and improve public health.</p>
             <div class="progress-wrap">
               <div class="progress">
-                <div class="progress-bar" style="width:58%" role="progressbar"></div>
+                <div class="progress-bar" style="width:55%" role="progressbar"></div>
               </div>
               <div class="fund-info">
-                <span>Raised: <strong>$23,200</strong></span>
-                <span>Goal: <strong>$40,000</strong></span>
+                <span>Raised: <strong>Ksh 220,000</strong></span>
+                <span>Goal: <strong>Ksh 400,000</strong></span>
               </div>
             </div>
           </div>
           <div class="cause-footer">
-            <span class="meta"><i class="fas fa-users me-1"></i> <strong>183</strong> Donors</span>
-            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Donate</a>
+            <span class="meta"><i class="fas fa-users me-1"></i> <strong>130</strong> Supporters</span>
+            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Support</a>
           </div>
         </div>
       </div>
@@ -1145,31 +282,31 @@
       <div class="col-md-6 col-lg-4 fade-up delay-2">
         <div class="cause-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&auto=format" alt="Healthcare" />
-            <span class="category-tag">Healthcare</span>
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&auto=format" alt="Tree Planting" />
+            <span class="category-tag">Climate</span>
           </div>
           <div class="body">
-            <h5><a href="#causes">Mobile Health Clinics for Rural Areas</a></h5>
-            <p>Fund mobile medical units that bring preventive care, vaccinations, and treatment to remote regions.</p>
+            <h5><a href="#causes">Tree Planting & Climate Action Projects</a></h5>
+            <p>Our mission is to restore green spaces through tree planting, conservation, and climate resilience programs.</p>
             <div class="progress-wrap">
               <div class="progress">
-                <div class="progress-bar" style="width:88%" role="progressbar"></div>
+                <div class="progress-bar" style="width:82%" role="progressbar"></div>
               </div>
               <div class="fund-info">
-                <span>Raised: <strong>$61,600</strong></span>
-                <span>Goal: <strong>$70,000</strong></span>
+                <span>Raised: <strong>Ksh 410,000</strong></span>
+                <span>Goal: <strong>Ksh 500,000</strong></span>
               </div>
             </div>
           </div>
           <div class="cause-footer">
-            <span class="meta"><i class="fas fa-users me-1"></i> <strong>412</strong> Donors</span>
-            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Donate</a>
+            <span class="meta"><i class="fas fa-users me-1"></i> <strong>290</strong> Supporters</span>
+            <a href="#donate" class="btn-primary-custom" style="padding:8px 20px;font-size:.85rem;">Support</a>
           </div>
         </div>
       </div>
     </div>
     <div class="text-center mt-5 fade-up">
-      <a href="#causes" class="btn-primary-custom">View All Causes</a>
+      <a href="#causes" class="btn-primary-custom">View All Programs</a>
     </div>
   </div>
 </section>
@@ -1180,17 +317,17 @@
     <div class="row align-items-center g-5">
       <div class="col-lg-6 fade-up">
         <span class="section-subtitle">Our Mission</span>
-        <h2 class="section-title">Empowering Communities<br>Through Action</h2>
+        <h2 class="section-title">Creating Sustainable Change<br>From the Ground Up</h2>
         <div class="divider-line"></div>
-        <p>We believe that poverty, inequality, and suffering are not inevitable — they are the result of broken systems that can be fixed with collective action, compassion, and smart investment.</p>
-        <p style="color:rgba(255,255,255,.65)">Our mission is to mobilize resources, build local capacity, and amplify the voices of those who are most often left behind. Together, we are writing a different story.</p>
+        <p>EcoShift Hub exists to inspire a shift toward sustainability through innovation, environmental education, and community-driven climate solutions.</p>
+        <p style="color:rgba(255,255,255,.65)">We believe that protecting the environment is not optional — it is a responsibility. Our goal is to empower youth and communities to take action, build resilience, and create lasting impact.</p>
         <div class="d-flex align-items-center gap-4 mt-4">
           <button class="play-btn" data-bs-toggle="modal" data-bs-target="#videoModal">
             <i class="fas fa-play ms-1"></i>
           </button>
           <div>
             <strong style="color:#fff;font-size:1rem">Watch Our Story</strong>
-            <p style="color:rgba(255,255,255,.5);font-size:.85rem;margin:0">See the impact we've made together</p>
+            <p style="color:rgba(255,255,255,.5);font-size:.85rem;margin:0">See what EcoShift Hub is building</p>
           </div>
         </div>
       </div>
@@ -1198,30 +335,30 @@
         <div class="row g-3">
           <div class="col-6">
             <div class="mission-stat">
-              <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-              <h4>15K+</h4>
-              <p>Students Educated</p>
+              <div class="icon"><i class="fas fa-leaf"></i></div>
+              <h4>10K+</h4>
+              <p>Trees Planted</p>
             </div>
           </div>
           <div class="col-6">
             <div class="mission-stat">
-              <div class="icon"><i class="fas fa-tint"></i></div>
-              <h4>350+</h4>
-              <p>Wells Built</p>
+              <div class="icon"><i class="fas fa-recycle"></i></div>
+              <h4>250K+</h4>
+              <p>Waste Recycled (KG)</p>
             </div>
           </div>
           <div class="col-6">
             <div class="mission-stat">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4>80K+</h4>
-              <p>Patients Treated</p>
+              <div class="icon"><i class="fas fa-users"></i></div>
+              <h4>3,000+</h4>
+              <p>Youth Empowered</p>
             </div>
           </div>
           <div class="col-6">
             <div class="mission-stat">
-              <div class="icon"><i class="fas fa-home"></i></div>
-              <h4>2,200+</h4>
-              <p>Homes Rebuilt</p>
+              <div class="icon"><i class="fas fa-seedling"></i></div>
+              <h4>120+</h4>
+              <p>Community Projects</p>
             </div>
           </div>
         </div>
@@ -1236,7 +373,7 @@
     <div class="row justify-content-between align-items-end mb-5 fade-up">
       <div class="col-lg-6">
         <span class="section-subtitle">Upcoming Events</span>
-        <h2 class="section-title">Join Us at Our<br>Upcoming Events</h2>
+        <h2 class="section-title">Join EcoShift Hub<br>In Our Next Activities</h2>
         <div class="divider-line"></div>
       </div>
       <div class="col-lg-auto">
@@ -1246,7 +383,7 @@
     <div class="row g-5 align-items-start">
       <div class="col-lg-5 fade-up">
         <div class="event-featured-img">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=700&auto=format" alt="Charity Gala" />
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=700&auto=format" alt="EcoShift Hub Event" />
           <span class="label">Featured</span>
         </div>
       </div>
@@ -1255,11 +392,11 @@
         <div class="event-card">
           <div class="event-date"><span class="day">18</span><span class="month">Mar</span></div>
           <div class="event-info">
-            <h5><a href="#events">Annual Charity Gala & Fundraiser 2026</a></h5>
-            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">Join us for an elegant evening of inspiring stories, live entertainment, and fundraising for our global programs.</p>
+            <h5><a href="#events">EcoShift Green Innovation Forum 2026</a></h5>
+            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">A powerful forum bringing together youth, innovators, and community leaders to discuss climate solutions and sustainability.</p>
             <div class="event-meta">
-              <span><i class="fas fa-clock"></i> 6:00 PM – 11:00 PM</span>
-              <span><i class="fas fa-map-marker-alt"></i> Grand Ballroom, NYC</span>
+              <span><i class="fas fa-clock"></i> 9:00 AM – 4:00 PM</span>
+              <span><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</span>
             </div>
           </div>
         </div>
@@ -1267,11 +404,11 @@
         <div class="event-card">
           <div class="event-date"><span class="day">05</span><span class="month">Apr</span></div>
           <div class="event-info">
-            <h5><a href="#events">Community 5K Run for Clean Water</a></h5>
-            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">Lace up and run to raise awareness and funds for our clean water initiatives across three continents.</p>
+            <h5><a href="#events">Community Cleanup & Recycling Drive</a></h5>
+            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">Join us as we clean our neighborhoods, collect waste, and promote recycling as a lifestyle.</p>
             <div class="event-meta">
-              <span><i class="fas fa-clock"></i> 7:00 AM – 12:00 PM</span>
-              <span><i class="fas fa-map-marker-alt"></i> Central Park, NYC</span>
+              <span><i class="fas fa-clock"></i> 8:00 AM – 1:00 PM</span>
+              <span><i class="fas fa-map-marker-alt"></i> Dagoretti, Nairobi</span>
             </div>
           </div>
         </div>
@@ -1279,11 +416,11 @@
         <div class="event-card">
           <div class="event-date"><span class="day">22</span><span class="month">Apr</span></div>
           <div class="event-info">
-            <h5><a href="#events">Earth Day Volunteer Planting Day</a></h5>
-            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">Help us plant 5,000 trees in urban neighborhoods as part of our environmental sustainability initiative.</p>
+            <h5><a href="#events">Earth Day Tree Planting Campaign</a></h5>
+            <p class="text-muted" style="font-size:.88rem;margin-bottom:.5rem">Celebrate Earth Day with EcoShift Hub by planting trees and restoring green spaces in local communities.</p>
             <div class="event-meta">
               <span><i class="fas fa-clock"></i> 9:00 AM – 3:00 PM</span>
-              <span><i class="fas fa-map-marker-alt"></i> Riverside Park, NYC</span>
+              <span><i class="fas fa-map-marker-alt"></i> Nairobi County</span>
             </div>
           </div>
         </div>
@@ -1299,22 +436,22 @@
     <div class="row align-items-center g-5">
       <!-- Info Side -->
       <div class="col-lg-5 fade-up">
-        <span class="section-subtitle">Make a Donation</span>
-        <h2 class="section-title">Your Generosity<br>Creates Change</h2>
+        <span class="section-subtitle">Support Our Work</span>
+        <h2 class="section-title">Your Contribution<br>Creates Impact</h2>
         <div class="divider-line"></div>
-        <p class="text-muted">Every dollar you give goes directly to programs that transform lives. We are committed to full transparency — see exactly where your money goes.</p>
+        <p class="text-muted">Every donation helps EcoShift Hub empower youth, plant trees, support recycling systems, and drive sustainable development in communities.</p>
         <div class="donate-info">
           <div class="info-block">
             <div class="icon"><i class="fas fa-shield-alt"></i></div>
-            <div><h6>100% Secure Donations</h6><p>All transactions are encrypted and fully secure via Stripe.</p></div>
+            <div><h6>Secure Contributions</h6><p>All payments are handled securely through trusted systems.</p></div>
           </div>
           <div class="info-block">
             <div class="icon"><i class="fas fa-chart-pie"></i></div>
-            <div><h6>Transparent Spending</h6><p>92 cents of every dollar goes directly to programs.</p></div>
+            <div><h6>Transparent Accountability</h6><p>We ensure every contribution supports real community programs.</p></div>
           </div>
           <div class="info-block">
             <div class="icon"><i class="fas fa-certificate"></i></div>
-            <div><h6>Tax Deductible</h6><p>All donations are tax-deductible under IRS Section 501(c)(3).</p></div>
+            <div><h6>Verified Community Work</h6><p>EcoShift Hub is committed to measurable impact and sustainable change.</p></div>
           </div>
         </div>
       </div>
@@ -1322,34 +459,34 @@
       <!-- Form Side -->
       <div class="col-lg-7 fade-up delay-1">
         <div class="donate-box">
-          <h4 class="mb-1">Choose Your Donation</h4>
+          <h4 class="mb-1">Choose Your Support Amount</h4>
           <p class="text-muted mb-0">Select an amount or enter your own</p>
 
           <div class="amount-grid mt-3">
-            <button class="amount-btn" onclick="selectAmount(this, '$10')">$10</button>
-            <button class="amount-btn active" onclick="selectAmount(this, '$25')">$25</button>
-            <button class="amount-btn" onclick="selectAmount(this, '$50')">$50</button>
-            <button class="amount-btn" onclick="selectAmount(this, '$100')">$100</button>
-            <button class="amount-btn" onclick="selectAmount(this, '$250')">$250</button>
-            <button class="amount-btn" onclick="selectAmount(this, '$500')">$500</button>
+            <button class="amount-btn" onclick="selectAmount(this, 'Ksh 500')">Ksh 500</button>
+            <button class="amount-btn active" onclick="selectAmount(this, 'Ksh 1000')">Ksh 1000</button>
+            <button class="amount-btn" onclick="selectAmount(this, 'Ksh 2500')">Ksh 2500</button>
+            <button class="amount-btn" onclick="selectAmount(this, 'Ksh 5000')">Ksh 5000</button>
+            <button class="amount-btn" onclick="selectAmount(this, 'Ksh 10000')">Ksh 10000</button>
+            <button class="amount-btn" onclick="selectAmount(this, 'Ksh 25000')">Ksh 25000</button>
           </div>
 
           <div class="mb-3">
             <label class="form-label">Custom Amount</label>
             <div class="input-group">
-              <span class="input-group-text bg-light border-end-0" style="border:1.5px solid var(--border);border-right:none;border-radius:var(--radius) 0 0 var(--radius)">$</span>
+              <span class="input-group-text bg-light border-end-0" style="border:1.5px solid var(--border);border-right:none;border-radius:var(--radius) 0 0 var(--radius)">Ksh</span>
               <input type="number" class="form-control" id="customAmount" placeholder="Enter amount" style="border-left:none;border-radius:0 var(--radius) var(--radius) 0;" />
             </div>
           </div>
 
           <div class="mb-3">
-            <label class="form-label">Donate For</label>
+            <label class="form-label">Support For</label>
             <select class="form-select">
               <option>Where it's needed most</option>
-              <option>Education Programs</option>
-              <option>Clean Water Initiative</option>
-              <option>Healthcare Projects</option>
-              <option>Emergency Relief</option>
+              <option>Tree Planting Campaigns</option>
+              <option>Waste Management & Recycling</option>
+              <option>Youth Green Skills Training</option>
+              <option>Community Cleanups</option>
             </select>
           </div>
 
@@ -1372,16 +509,16 @@
           <div class="mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="anonymousCheck" />
-              <label class="form-check-label text-muted" for="anonymousCheck" style="font-size:.9rem">Donate anonymously</label>
+              <label class="form-check-label text-muted" for="anonymousCheck" style="font-size:.9rem">Support anonymously</label>
             </div>
           </div>
 
           <button class="btn-primary-custom w-100" style="text-align:center;padding:16px;">
-            <i class="fas fa-heart me-2"></i>Donate $25 Now
+            <i class="fas fa-leaf me-2"></i>Support EcoShift Now
           </button>
           <div class="secure-badge">
             <i class="fas fa-lock"></i>
-            <span>Secure payment powered by Stripe SSL encryption</span>
+            <span>Secure payment processing for safe contributions</span>
           </div>
         </div>
       </div>
@@ -1395,7 +532,7 @@
     <div class="row justify-content-center text-center mb-5 fade-up">
       <div class="col-lg-6">
         <span class="section-subtitle">Meet The Team</span>
-        <h2 class="section-title">The People Behind<br>Our Mission</h2>
+        <h2 class="section-title">The People Behind<br>EcoShift Hub</h2>
         <div class="divider-line center"></div>
       </div>
     </div>
@@ -1403,40 +540,40 @@
       <div class="col-6 col-md-4 col-lg-2-4 fade-up" style="max-width:200px">
         <div class="team-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format" alt="CEO" />
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&auto=format" alt="Founder" />
             <div class="social-overlay">
               <a href="#"><i class="fab fa-linkedin-in"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
-          <h5>James Wilson</h5>
-          <span>Executive Director</span>
+          <h5>EcoShift Leader</h5>
+          <span>Founder & Director</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2-4 fade-up delay-1" style="max-width:200px">
         <div class="team-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format" alt="COO" />
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format" alt="Programs" />
             <div class="social-overlay">
               <a href="#"><i class="fab fa-linkedin-in"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
-          <h5>Sarah Chen</h5>
-          <span>Program Director</span>
+          <h5>Programs Lead</h5>
+          <span>Programs Coordinator</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2-4 fade-up delay-2" style="max-width:200px">
         <div class="team-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format" alt="CFO" />
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format" alt="Finance" />
             <div class="social-overlay">
               <a href="#"><i class="fab fa-linkedin-in"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
-          <h5>Marcus Lee</h5>
-          <span>Finance Director</span>
+          <h5>Finance Lead</h5>
+          <span>Finance & Compliance</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2-4 fade-up delay-3" style="max-width:200px">
@@ -1448,21 +585,21 @@
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
-          <h5>Aisha Patel</h5>
-          <span>Communications</span>
+          <h5>Communications Lead</h5>
+          <span>Media & Outreach</span>
         </div>
       </div>
       <div class="col-6 col-md-4 col-lg-2-4 fade-up delay-3" style="max-width:200px">
         <div class="team-card">
           <div class="img-wrap">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format" alt="Field" />
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format" alt="Field Ops" />
             <div class="social-overlay">
               <a href="#"><i class="fab fa-linkedin-in"></i></a>
               <a href="#"><i class="fab fa-twitter"></i></a>
             </div>
           </div>
-          <h5>David Okafor</h5>
-          <span>Field Operations</span>
+          <h5>Field Coordinator</h5>
+          <span>Community Engagement</span>
         </div>
       </div>
     </div>
@@ -1474,8 +611,8 @@
   <div class="container">
     <div class="row justify-content-center text-center mb-5 fade-up">
       <div class="col-lg-6">
-        <span class="section-subtitle">Testimonials</span>
-        <h2 class="section-title">What Our Supporters Say</h2>
+        <span class="section-subtitle">Impact Stories</span>
+        <h2 class="section-title">What People Say About<br>EcoShift Hub</h2>
         <div class="divider-line center" style="background:var(--accent)"></div>
       </div>
     </div>
@@ -1484,10 +621,10 @@
         <div class="testimonial-card">
           <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
           <div class="stars">★★★★★</div>
-          <p>I've been donating to Charitize for three years and the transparency is unmatched. I receive detailed reports on exactly how my money is used and the impact it creates. Truly remarkable organization.</p>
+          <p>EcoShift Hub has transformed our community through cleanups and recycling programs. Their work is real, visible, and inspiring. We now understand sustainability as a lifestyle.</p>
           <div class="author">
-            <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=150&auto=format" alt="Emily R." />
-            <div><h6>Emily Rodriguez</h6><span>Monthly Donor since 2022</span></div>
+            <img src="https://images.unsplash.com/photo-1548142813-c348350df52b?w=150&auto=format" alt="Supporter" />
+            <div><h6>Community Member</h6><span>Dagoretti Resident</span></div>
           </div>
         </div>
       </div>
@@ -1495,10 +632,10 @@
         <div class="testimonial-card">
           <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
           <div class="stars">★★★★★</div>
-          <p>Volunteering with Charitize in Kenya changed my life. I saw firsthand how a well-built with donor funds transformed an entire village. The team is passionate, professional, and deeply committed.</p>
+          <p>Volunteering with EcoShift Hub was eye-opening. The team is passionate, disciplined, and committed to impact. Their tree planting campaigns are changing our environment.</p>
           <div class="author">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format" alt="Tom B." />
-            <div><h6>Thomas Burke</h6><span>Volunteer & Donor</span></div>
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format" alt="Volunteer" />
+            <div><h6>Volunteer Partner</h6><span>Tree Planting Team</span></div>
           </div>
         </div>
       </div>
@@ -1506,10 +643,10 @@
         <div class="testimonial-card">
           <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
           <div class="stars">★★★★★</div>
-          <p>As a corporate partner, we've been amazed by the level of engagement and impact reporting Charitize provides. Our employees feel genuinely connected to the communities they're helping.</p>
+          <p>EcoShift Hub is building a strong youth movement around climate solutions. Their innovation programs and trainings are empowering the next generation of green leaders.</p>
           <div class="author">
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&auto=format" alt="Priya M." />
-            <div><h6>Priya Mehta</h6><span>CSR Manager, TechCorp</span></div>
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&auto=format" alt="Partner" />
+            <div><h6>Project Partner</h6><span>Environmental Advocate</span></div>
           </div>
         </div>
       </div>
@@ -1524,12 +661,12 @@
       <div class="row g-5 align-items-center">
         <div class="col-lg-5 fade-up">
           <span class="section-subtitle" style="color:var(--accent)">Get Involved</span>
-          <h2 class="section-title">Become a Volunteer &<br>Make an Impact</h2>
-          <p class="mt-3">You don't need to be a doctor or engineer to change the world. We welcome people from all backgrounds — your time, skills, and passion are what we need most.</p>
+          <h2 class="section-title">Join EcoShift Hub &<br>Be Part of the Solution</h2>
+          <p class="mt-3">Whether you're a student, developer, entrepreneur, or community member — your skills can help drive environmental transformation.</p>
           <ul class="check-list mt-4">
-            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Flexible commitment — local or remote options</span></li>
-            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Training and support provided for all roles</span></li>
-            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Join a global community of 12,000+ volunteers</span></li>
+            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Flexible volunteering opportunities</span></li>
+            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Community-based impact activities</span></li>
+            <li><i class="fas fa-check-circle"></i><span style="color:rgba(255,255,255,.8)">Join a growing sustainability movement</span></li>
           </ul>
         </div>
         <div class="col-lg-7 fade-up delay-1">
@@ -1549,26 +686,26 @@
               </div>
               <div class="col-sm-6">
                 <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" placeholder="+1 234 567 8900" />
+                <input type="tel" class="form-control" placeholder="+254 700 000 000" />
               </div>
               <div class="col-12">
                 <label class="form-label">Area of Interest</label>
                 <select class="form-select" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff;">
                   <option style="color:#333">Select an area</option>
-                  <option style="color:#333">Education & Tutoring</option>
-                  <option style="color:#333">Healthcare Support</option>
-                  <option style="color:#333">Construction & Building</option>
-                  <option style="color:#333">Fundraising & Events</option>
-                  <option style="color:#333">Communications & Media</option>
+                  <option style="color:#333">Community Cleanups</option>
+                  <option style="color:#333">Tree Planting</option>
+                  <option style="color:#333">Recycling & Waste Programs</option>
+                  <option style="color:#333">Youth Training & Mentorship</option>
+                  <option style="color:#333">Media & Awareness Campaigns</option>
                 </select>
               </div>
               <div class="col-12">
-                <label class="form-label">Why do you want to volunteer?</label>
+                <label class="form-label">Why do you want to join EcoShift?</label>
                 <textarea class="form-control" rows="3" placeholder="Tell us a little about yourself..."></textarea>
               </div>
               <div class="col-12">
                 <button class="btn-primary-custom w-100" style="text-align:center;padding:16px;">
-                  <i class="fas fa-hands-helping me-2"></i>Register as Volunteer
+                  <i class="fas fa-hands-helping me-2"></i>Register to Join
                 </button>
               </div>
             </div>
@@ -1584,8 +721,8 @@
   <div class="container">
     <div class="row align-items-center g-4">
       <div class="col-lg-6 fade-up">
-        <h3>Subscribe to Our Newsletter</h3>
-        <p>Stay updated on our latest causes, events, and impact stories. No spam — just meaningful updates.</p>
+        <h3>Subscribe to EcoShift Updates</h3>
+        <p>Get updates on upcoming cleanups, events, climate programs, and impact stories. No spam — only purpose.</p>
       </div>
       <div class="col-lg-6 fade-up delay-1">
         <div class="newsletter-form d-flex ms-lg-auto">
@@ -1603,9 +740,9 @@
     <div class="row justify-content-center text-center mb-5 fade-up">
       <div class="col-lg-6">
         <span class="section-subtitle">Contact Us</span>
-        <h2 class="section-title">Get In Touch With Us</h2>
+        <h2 class="section-title">Get In Touch With<br>EcoShift Hub</h2>
         <div class="divider-line center"></div>
-        <p class="text-muted">Have questions? Want to partner with us? We'd love to hear from you.</p>
+        <p class="text-muted">Have questions, want to partner, or support our mission? Reach out to EcoShift Hub anytime.</p>
       </div>
     </div>
     <div class="row g-5">
@@ -1613,35 +750,35 @@
         <div class="contact-info-block">
           <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
           <div>
-            <h6>Our Address</h6>
-            <p>123 Charity Street, Manhattan<br>New York, NY 10001, USA</p>
+            <h6>Our Location</h6>
+            <p>EcoShift Hub Offices<br>Nairobi, Kenya</p>
           </div>
         </div>
         <div class="contact-info-block">
           <div class="icon"><i class="fas fa-phone-alt"></i></div>
           <div>
-            <h6>Phone Numbers</h6>
-            <p>+1 (234) 567-8900<br>+1 (234) 567-8901</p>
+            <h6>Phone</h6>
+            <p>+254 700 000 000<br>+254 711 000 000</p>
           </div>
         </div>
         <div class="contact-info-block">
           <div class="icon"><i class="fas fa-envelope"></i></div>
           <div>
-            <h6>Email Addresses</h6>
-            <p>info@charitize.org<br>support@charitize.org</p>
+            <h6>Email</h6>
+            <p>info@ecoshifthub.org<br>support@ecoshifthub.org</p>
           </div>
         </div>
         <div class="contact-info-block">
           <div class="icon"><i class="fas fa-clock"></i></div>
           <div>
-            <h6>Office Hours</h6>
-            <p>Monday–Friday: 9:00 AM – 6:00 PM<br>Saturday: 10:00 AM – 2:00 PM</p>
+            <h6>Working Hours</h6>
+            <p>Monday–Friday: 9:00 AM – 5:00 PM<br>Saturday: 9:00 AM – 1:00 PM</p>
           </div>
         </div>
       </div>
       <div class="col-lg-7 fade-up delay-1">
         <div class="contact-form-wrap">
-          <h4 class="mb-3">Send Us a Message</h4>
+          <h4 class="mb-3">Send EcoShift Hub a Message</h4>
           <div class="row g-3">
             <div class="col-sm-6">
               <input type="text" class="form-control" placeholder="Your Name" />
@@ -1673,7 +810,7 @@
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.617!2d-73.9871!3d40.7484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ0JzU0LjIiTiA3M8KwNTknMTMuNiJX!5e0!3m2!1sen!2sus!4v1234567890"
     loading="lazy"
     allowfullscreen=""
-    title="Charitize Office Location">
+    title="EcoShift Hub Office Location">
   </iframe>
 </section>
 
@@ -1682,8 +819,8 @@
   <div class="container">
     <div class="row g-5">
       <div class="col-lg-4">
-        <div class="footer-brand mb-3">Chari<span>tize</span></div>
-        <p>A global nonprofit committed to creating lasting change through education, clean water, healthcare, and community empowerment programs worldwide.</p>
+        <div class="footer-brand mb-3">EcoShift<span>Hub</span></div>
+        <p>EcoShift Hub is a sustainability-driven organization empowering communities through climate action, recycling initiatives, youth empowerment, and eco-innovation programs.</p>
         <div class="footer-social mt-3">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1696,42 +833,42 @@
         <h6 class="footer-heading">Quick Links</h6>
         <ul class="footer-links">
           <li><a href="#about"><i class="fas fa-angle-right"></i>About Us</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Our Causes</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Programs</a></li>
           <li><a href="#events"><i class="fas fa-angle-right"></i>Events</a></li>
           <li><a href="#team"><i class="fas fa-angle-right"></i>Our Team</a></li>
-          <li><a href="#volunteer"><i class="fas fa-angle-right"></i>Volunteer</a></li>
+          <li><a href="#volunteer"><i class="fas fa-angle-right"></i>Join Us</a></li>
           <li><a href="#contact"><i class="fas fa-angle-right"></i>Contact</a></li>
         </ul>
       </div>
       <div class="col-6 col-lg-2">
-        <h6 class="footer-heading">Causes</h6>
+        <h6 class="footer-heading">Programs</h6>
         <ul class="footer-links">
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Education</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Clean Water</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Healthcare</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Food Security</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Environment</a></li>
-          <li><a href="#causes"><i class="fas fa-angle-right"></i>Emergency Aid</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Climate Action</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Waste Recycling</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Tree Planting</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Youth Empowerment</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Green Innovation</a></li>
+          <li><a href="#causes"><i class="fas fa-angle-right"></i>Community Cleanups</a></li>
         </ul>
       </div>
       <div class="col-lg-4">
         <h6 class="footer-heading">Contact Info</h6>
         <div class="d-flex flex-column gap-2" style="font-size:.9rem">
-          <div><i class="fas fa-map-marker-alt me-2" style="color:var(--primary)"></i>123 Charity Street, New York, NY 10001</div>
-          <div><i class="fas fa-phone-alt me-2" style="color:var(--primary)"></i>+1 (234) 567-8900</div>
-          <div><i class="fas fa-envelope me-2" style="color:var(--primary)"></i>info@charitize.org</div>
-          <div><i class="fas fa-clock me-2" style="color:var(--primary)"></i>Mon–Fri: 9:00 AM – 6:00 PM</div>
+          <div><i class="fas fa-map-marker-alt me-2" style="color:var(--primary)"></i>Nairobi, Kenya</div>
+          <div><i class="fas fa-phone-alt me-2" style="color:var(--primary)"></i>+254 700 000 000</div>
+          <div><i class="fas fa-envelope me-2" style="color:var(--primary)"></i>info@ecoshifthub.org</div>
+          <div><i class="fas fa-clock me-2" style="color:var(--primary)"></i>Mon–Fri: 9:00 AM – 5:00 PM</div>
         </div>
         <div class="mt-4">
           <a href="#donate" class="btn-primary-custom" style="padding:11px 28px;font-size:.9rem;">
-            <i class="fas fa-heart me-2"></i>Donate Now
+            <i class="fas fa-leaf me-2"></i>Support EcoShift
           </a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="d-flex justify-content-between flex-wrap gap-2">
-        <span>© 2026 Charitize. All rights reserved. Designed by <a href="#">HTMLCodex</a></span>
+        <span>© 2026 EcoShift Hub. All rights reserved. Designed by <a href="#">EcoShift Hub Team</a></span>
         <span>
           <a href="#" class="me-3" style="color:rgba(255,255,255,.5);font-size:.84rem">Privacy Policy</a>
           <a href="#" style="color:rgba(255,255,255,.5);font-size:.84rem">Terms & Conditions</a>
@@ -1755,7 +892,7 @@
         <div class="ratio ratio-16x9">
           <iframe id="ytFrame"
             src=""
-            title="Charitize Story"
+            title="EcoShift Hub Story"
             allow="autoplay; encrypted-media"
             allowfullscreen></iframe>
         </div>
@@ -1767,111 +904,10 @@
 <!-- ========== SCRIPTS ========== -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
+<!-- Custom JS -->
+<script src="main.js"></script>
 <script>
-  /* ─── Back to Top ─── */
-  const backTop = document.getElementById('backTop');
-  window.addEventListener('scroll', () => {
-    backTop.classList.toggle('show', window.scrollY > 300);
-  });
-  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  /* ─── Carousel Dots Sync ─── */
-  const bsCarousel = document.getElementById('bsCarousel');
-  const dots = document.querySelectorAll('.carousel-controls button');
-
-  bsCarousel.addEventListener('slid.bs.carousel', e => {
-    dots.forEach(d => d.classList.remove('active'));
-    dots[e.to].classList.add('active');
-  });
-
-  function goSlide(idx) {
-    bootstrap.Carousel.getInstance(bsCarousel).to(idx);
-  }
-
-  /* ─── Donation Amount Selector ─── */
-  function selectAmount(btn, amount) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('customAmount').value = '';
-
-    const donateBtn = document.querySelector('#donate .btn-primary-custom[style*="padding:16px"]');
-    if (donateBtn) donateBtn.textContent = `❤ Donate ${amount} Now`;
-  }
-
-  document.getElementById('customAmount').addEventListener('input', function () {
-    if (this.value) {
-      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-      const donateBtn = document.querySelector('#donate .btn-primary-custom[style*="padding:16px"]');
-      if (donateBtn) donateBtn.textContent = `❤ Donate $${this.value} Now`;
-    }
-  });
-
-  /* ─── Video Modal ─── */
-  const videoModal = document.getElementById('videoModal');
-  videoModal.addEventListener('show.bs.modal', () => {
-    document.getElementById('ytFrame').src = 'https://www.youtube.com/embed/4AQdWf2GUBY?autoplay=1';
-  });
-  videoModal.addEventListener('hide.bs.modal', () => {
-    document.getElementById('ytFrame').src = '';
-  });
-
-  /* ─── Number Counter ─── */
-  function animateCounters() {
-    document.querySelectorAll('.counter').forEach(el => {
-      const target = parseInt(el.dataset.target, 10);
-      const duration = 1800;
-      const step = target / (duration / 16);
-      let current = 0;
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) { current = target; clearInterval(timer); }
-        el.textContent = Math.floor(current);
-      }, 16);
-    });
-  }
-
-  /* ─── Scroll Fade-up Animation ─── */
-  const fadeEls = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Trigger counters when stats section becomes visible
-        if (entry.target.closest('#statsBar')) animateCounters();
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  fadeEls.forEach(el => observer.observe(el));
-
-  /* ─── Smooth Navbar Scroll Highlight ─── */
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(l => {
-      l.classList.remove('active');
-      if (l.getAttribute('href') === `#${current}`) l.classList.add('active');
-    });
-  });
-
-  /* ─── Contact / Volunteer Form Toast Feedback ─── */
-  document.querySelectorAll('button').forEach(btn => {
-    const txt = btn.textContent.trim();
-    if (txt.includes('Send Message') || txt.includes('Register as Volunteer') || txt.includes('Subscribe')) {
-      btn.addEventListener('click', function () {
-        const orig = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-check me-2"></i>Success!';
-        this.style.background = '#2ecc71';
-        setTimeout(() => { this.innerHTML = orig; this.style.background = ''; }, 3000);
-      });
-    }
-  });
+ 
 </script>
 </body>
 </html>
